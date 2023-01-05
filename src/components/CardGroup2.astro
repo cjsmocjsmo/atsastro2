@@ -1,0 +1,32 @@
+---
+import Card from "../components/Card.astro";
+import NotLoggedInReview from "./NotLoggedInReview.astro";
+import NotLoggedInEstimate from "./NotLoggedInEstimate.astro";
+const { isLoggedIn } = Astro.props;
+---
+
+<ul role="list" class="grid grid-cols-2 gap-8 pb-5">
+    {
+        isLoggedIn
+        ?
+        <Card
+            href="/postreview"
+            title="Leave A Review"
+            body="Please tell use how we did."
+        />
+        :
+        <NotLoggedInReview />
+    }
+
+    {
+        isLoggedIn
+        ?
+        <Card
+            href="/estimate"
+            title="Get An Estimate"
+            body="We would  ❤️  for you to make an appointment for a free estimate."
+        />
+        :
+        <NotLoggedInEstimate />
+    }
+</ul>

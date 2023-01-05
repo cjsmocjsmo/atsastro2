@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import VidGroup1 from "../components/VidGroup1.astro";
+import Message from '../components/Message.astro';
+// import Card from '../components/Card.astro';
+import CardGroup1 from '../components/CardGroup1.astro';
+import CardGroup2 from '../components/CardGroup2.astro';
+import FiveStar from "../components/FiveStars.astro";
+// import VidPlayer from '../components/VidPlayer.astro';
+---
+
+<Layout title="AlphaTree">
+	<main class="m-auto p-8 max-w-screen-lg">
+		<!-- <ul role="list" class="grid grid-cols-2 gap-8 pb-5">
+			<div></div>
+			<Card
+				href="/chat"
+				title="SignIn"
+				body="SignIn to use this sites features."
+			/>
+		</ul> -->
+
+		<a href="/signin">
+			<button class="text-wite mb-5 bg-blue-400 pt-2.5 pb-2.5 pr-4 pl-4 rounded-lg">
+				SignIn
+			</button>
+		</a>
+
+		<Banner />
+
+		<center><h1 class="m-8"><span class="text-gradient">360 516 8933</span></h1></center>
+
+		<Message />
+
+		<CardGroup1 />
+
+		<VidGroup1 />
+
+		<CardGroup2 isLoggedIn={true} />
+
+		<ul role="list" class="link-card-grid">
+			<div class="mx-auto block box-content h-fit w-9/12 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-600 italic">
+				<FiveStar />
+				<p class="text-black">I’m excited to share my experience, they excepted the job when no one else would. We had
+					several local tree service companies come out and declined to remove them because the
+					risk and difficulty . We had 4 very risky tall fir trees that were hanging over our house ,
+					up against a fence which adjoined the Neighboring house blocked in by a shed and covered 
+					in Ivy vines the size of trees from the ground to the top! They showed up on time as planned 
+					and shortly after introductions the crew was geared up and climbing and cutting. We hung 
+					out with the crew during the whole process and had a great time learning, watching and 
+					laughing through the whole process. I did and will recommend this tree service company 
+					to anyone needing trees removed. Professional, experienced, fearless and affordable!"
+				</p>
+				<p class="float-right text-black mb-2">- Brenda B</p>
+				<br>
+				<center><a href="/reviewspage">see more</a></center>
+			</div>
+		</ul>
+
+
+		<!-- <ul role="list" class="link-card-grid">
+			<Card
+				href="/chat"
+				title="Chat"
+				body="Come chat with use, we would  ❤️  to hear about your new project."
+			/>
+			<Card
+				href="/payments"
+				title="Payments"
+				body="Make a payment."
+			/>
+		</ul> -->
+
+		<center><h1 class="m-8"><span class="text-gradient">360 516 8933</span></h1></center>
+	</main>
+</Layout>
+
+<style>
+	:root {
+		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
+	}
+
+	.text-gradient {
+		font-weight: 900;
+		background-image: var(--astro-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 100% 200%;
+		background-position-y: 100%;
+		border-radius: 0.4rem;
+		animation: pulse 4s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%,
+		100% {
+			background-position-y: 0%;
+		}
+		50% {
+			background-position-y: 80%;
+		}
+	}
+</style>
