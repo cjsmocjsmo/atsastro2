@@ -1,0 +1,74 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LeftArrow from "../../components/LeftArrow.astro";
+---
+
+<Layout title="SignIn">
+    <main class="m-auto p-8 max-w-screen-lg">
+        
+        <center><h1 class="text-white text-5xl">Sign In</h1></center>
+        <LeftArrow url="/" />
+
+        <form class="mx-auto" action="" method="get">
+            <center><label for="email">Email:</label></center>
+            <center
+                ><input
+                    class="input[type='text'] text-white bg-slate-600 rounded-lg h-10 w-9/12"
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="boo@mail.com"
+                />
+            </center>
+
+            <br /><br />
+
+            <center><label for="pwd">Password:</label></center>
+            <center
+                ><input
+                    class="input[type='text'] text-white bg-slate-600 rounded-lg h-10 w-9/12"
+                    type="text"
+                    id="pwd"
+                    name="pwd"
+                    placeholder="apassword"
+                />
+            </center>
+
+            <br /><br />
+
+            <center>
+                <a href="/">
+                    <button
+                        id="signinbtn"
+                        class="bg-slate-600 h-14 w-44 text-white rounded-lg"
+                        type="button"
+                    >
+                        Submit
+                    </button>
+                </a>
+            </center>
+
+            <br /><br />
+        </form>
+
+        <center
+            ><a href="/admin/signup" class="text-blue-400">Sign Up</a>
+        </center>
+
+        <br />
+
+        <center
+            ><a href="/admin/signinadmin" class="text-blue-400">Admin Login</a>
+        </center>
+    </main>
+</Layout>
+
+<script>
+    const email = document.querySelector('input[name="email"]');
+    const password = document.querySelector('input[name="pwd"]');
+    const button = document.querySelector('input[name="signinbtn"]');
+    button.addEventListener("click", () => {
+
+    })
+
+</script>
