@@ -67,6 +67,13 @@ import LeftArrow from "../../components/LeftArrow.astro";
     const password = document.querySelector('input[name="pwd"]');
     const button = document.querySelector("button#adminlogin");
     button.addEventListener("click", () => {
-        
+        // creditials need to be encripted before sending them over the Wire
+        // currently cryptojs is failing to build once it builds again implement
+        // encription
+        const u = "http://192.168.0.90:9090/adminsignin?creds=";
+        const r = email.value + "/" + password.value + "/" + admintoken.value;
+        const url = u + r;
+        const URL = encodeURI(url);
+        fetch(URL);
     });
 </script>
