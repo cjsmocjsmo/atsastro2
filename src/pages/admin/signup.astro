@@ -8,8 +8,7 @@ import LeftArrow from "../../components/LeftArrow.astro";
 
 <Layout title="SignIn">
     <main class="m-auto p-8 max-w-screen-lg">
-        
-        <center><h1 class="text-white text-5xl">Sign Up</h1></center>
+        <center><h1 class="text-white text-5xl">Create Account</h1></center>
         <LeftArrow url="/admin/signin" />
 
         <form class="mx-auto" action="" method="get">
@@ -40,16 +39,13 @@ import LeftArrow from "../../components/LeftArrow.astro";
             <br /><br />
 
             <center>
-                <a href="/">
-                    <button
-                        id="signupbtn"
-                        class="bg-slate-600 h-14 w-44 text-white rounded-lg"
-                        type="button"
-                        name="signinbtn"
-                    >
-                        Submit
-                    </button>
-                </a>
+                <button
+                    id="signupbtn"
+                    class="bg-slate-600 h-14 w-44 text-white rounded-lg"
+                    type="button"
+                >
+                    Submit
+                </button>
             </center>
 
             <br /><br />
@@ -60,14 +56,30 @@ import LeftArrow from "../../components/LeftArrow.astro";
 <script>
     const email = document.querySelector('input[name="email"]');
     const password = document.querySelector('input[name="pwd"]');
-    const button = document.querySelector('input[name="signupbtn"]');
+    const button = document.querySelector("button#signupbtn");
     button.addEventListener("click", () => {
-        // creditials need to be encripted before sending them over the Wire 
-        // currently cryptojs is failing to build once it builds again implement 
+        // creditials need to be encripted before sending them over the Wire
+        // currently cryptojs is failing to build once it builds again implement
         // encription
-        const u = "http://192.168.0.90:9090/signup?creds=" + email.value + "/" + password.value ;
-        const url = encodeURI(u)
-        fetch(url)
-    })
+        const u =
+            "http://192.168.0.90:9090/signup?creds=" +
+            email.value +
+            "/" +
+            password.value;
+        const url = encodeURI(u);
+        async function getToken(url) {
+            const resp = await fetch(url);
+            const data = await resp.json();
+            console.log(data);
+            return data;
+        }
 
+        getToken(url).then((token) => {
+            console.log("this is token");
+            console.log(token);
+            localStorage.setItem("UID", token);
+            const url2 = "/admin/signin";
+            window.location.href = url2;
+        });
+    });
 </script>

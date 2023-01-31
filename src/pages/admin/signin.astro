@@ -52,7 +52,7 @@ import LeftArrow from "../../components/LeftArrow.astro";
         </form>
 
         <center
-            ><a href="/admin/signup" class="text-blue-400">Sign Up</a>
+            ><a href="/admin/signup" class="text-blue-400">Create Account</a>
         </center>
 
         <br />
@@ -66,12 +66,13 @@ import LeftArrow from "../../components/LeftArrow.astro";
 <script>
     const email = document.querySelector('input[name="email"]');
     const password = document.querySelector('input[name="pwd"]');
-    const button = document.querySelector('input[name="signinbtn"]');
+    const button = document.querySelector('button#signinbtn');
     button.addEventListener("click", () => {
         // creditials need to be encripted before sending them over the Wire 
         // currently cryptojs is failing to build once it builds again implement 
         // encription
         const u = "http://192.168.0.90:9090/signin?creds=" + email.value + "/" + password.value ;
+        console.log(u)
         const url = encodeURI(u)
         fetch(url)
     })
