@@ -2,12 +2,13 @@
 import Card from "../components/Card.astro";
 import NotLoggedInReview from "./NotLoggedInReview.astro";
 import NotLoggedInEstimate from "./NotLoggedInEstimate.astro";
-const { isLoggedIn } = Astro.props;
+const { iLI } = Astro.props;
+console.log(iLI)
 ---
 
 <ul role="list" class="grid grid-cols-2 gap-8 pb-5">
     {
-        isLoggedIn
+        iLI
         ?
         <Card
             href="/postreview"
@@ -19,7 +20,7 @@ const { isLoggedIn } = Astro.props;
     }
 
     {
-        isLoggedIn
+        iLI
         ?
         <Card
             href="/estimate"
@@ -29,4 +30,4 @@ const { isLoggedIn } = Astro.props;
         :
         <NotLoggedInEstimate />
     }
-</ul>
+</ul> 

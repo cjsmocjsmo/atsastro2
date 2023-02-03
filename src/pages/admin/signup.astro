@@ -54,6 +54,20 @@ import LeftArrow from "../../components/LeftArrow.astro";
 </Layout>
 
 <script>
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/; SameSite=Lax";
+    }
+
+    async function getToken(aurl) {
+        const resp = await fetch(aurl);
+        const data = await resp.json();
+        console.log(data);
+        return data;
+    }
+
     const email = document.querySelector('input[name="email"]');
     const password = document.querySelector('input[name="pwd"]');
     const button = document.querySelector("button#signupbtn");
@@ -61,23 +75,15 @@ import LeftArrow from "../../components/LeftArrow.astro";
         // creditials need to be encripted before sending them over the Wire
         // currently cryptojs is failing to build once it builds again implement
         // encription
-        const u =
-            "http://192.168.0.90:9090/signup?creds=" +
-            email.value +
-            "/" +
-            password.value;
-        const url = encodeURI(u);
-        async function getToken(url) {
-            const resp = await fetch(url);
-            const data = await resp.json();
-            console.log(data);
-            return data;
-        }
+        const u = "http://192.168.0.90:9090/signup?creds=";
+        const r = email.value + "/" + password.value;
+        const url = u + r;
+        const URL = encodeURI(url);
 
-        getToken(url).then((token) => {
-            console.log("this is token");
-            console.log(token);
-            localStorage.setItem("UID", token);
+        getToken(URL).then((token) => {
+            setCookie("UID", token, 7);
+            setCookie("isLoggedIn", "false", 7);
+
             const url2 = "/admin/signin";
             window.location.href = url2;
         });
