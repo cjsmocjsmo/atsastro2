@@ -1,0 +1,21 @@
+---
+import Card from "./Card.astro";
+import NotLoggedInPayments from "./NotLoggedInPayments.astro";
+const { iLI } = Astro.props;
+---
+
+<>
+    {
+        iLI ? (
+            <div id="payments">
+                <Card
+                    href="/payments"
+                    title="Payments"
+                    body="Make a payment."
+                />
+            </div>
+        ) : (
+            <NotLoggedInPayments />
+        )
+    }
+</>

@@ -1,0 +1,40 @@
+---
+const { iLI } = Astro.props;
+---
+
+<>
+    {
+        iLI ? (
+            <button
+                id="signOutBtn"
+                class="text-wite mb-5 bg-blue-400 pt-2.5 pb-2.5 pr-4 pl-4 rounded-lg"
+            >
+                SignOut
+            </button>
+        ) : (
+            <a href="/admin/signin">
+                <button
+                    id="signInBtn"
+                    class="text-wite mb-5 bg-blue-400 pt-2.5 pb-2.5 pr-4 pl-4 rounded-lg"
+                >
+                    SignIn
+                </button>
+            </a>
+        )
+    }
+</>
+
+<script>
+    const button = document.getElementById("signOutBtn");
+    button.addEventListener("click", () => {
+        
+        // async function isLoggedIn(uid) {
+        // 	const u = "http://192.168.0.90:9090/isloggedin?creds=" + uid;
+        // 	const url = encodeURI(u);
+        // 	const resp = await fetch(url);
+        // 	const res = await resp.json();
+        // 	return res;
+        // }
+        
+    });
+</script>

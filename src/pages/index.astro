@@ -5,10 +5,10 @@ import VidGroup1 from "../components/VidGroup1.astro";
 import Message from "../components/Message.astro";
 import CardGroup1 from "../components/CardGroup1.astro";
 import CardGroup2 from "../components/CardGroup2.astro";
-import FiveStar from "../components/FiveStars.astro";
-import Card from "../components/Card.astro";
-import NotLoggedInPayments from "../components/NotLoggedInPayments.astro";
+import CardGroup3 from "../components/CardGroup3.astro";
 import PhoneNumber from "../components/PhoneNumber.astro";
+import MainMessage from "../components/MainMessage.astro";
+import InOutButton from "../components/InOutButton.astro";
 
 let isloggedin = false;
 if (Astro.cookies.has("isLoggedIn")) {
@@ -19,25 +19,7 @@ if (Astro.cookies.has("isLoggedIn")) {
 
 <Layout title="AlphaTree">
 	<main class="m-auto p-8 max-w-screen-lg">
-		{
-			isloggedin ? (
-				<button
-					id="signOutBtn"
-					class="text-wite mb-5 bg-blue-400 pt-2.5 pb-2.5 pr-4 pl-4 rounded-lg"
-				>
-					SignOut
-				</button>
-			) : (
-				<a href="/admin/signin">
-					<button
-						id="signInBtn"
-						class="text-wite mb-5 bg-blue-400 pt-2.5 pb-2.5 pr-4 pl-4 rounded-lg"
-					>
-						SignIn
-					</button>
-				</a>
-			)
-		}
+		<InOutButton iLI={isloggedin} />
 
 		<Banner />
 
@@ -51,82 +33,10 @@ if (Astro.cookies.has("isLoggedIn")) {
 
 		<CardGroup2 iLI={isloggedin} />
 
-		<ul role="list" class="link-card-grid">
-			<div
-				class="mx-auto block box-content h-fit xxsm:w-fit w-9/12 p-4 border-2 border-red-800 mb-5 rounded-lg bg-sky-600 italic"
-			>
-				<FiveStar />
-				<p class="xxsm:text-base xsm:text-lg text-xl italic text-black">
-					I’m excited to share my experience, they excepted the job
-					when no one else would. We had several local tree service
-					companies come out and declined to remove them because the
-					risk and difficulty . We had 4 very risky tall fir trees
-					that were hanging over our house , up against a fence which
-					adjoined the Neighboring house blocked in by a shed and
-					covered in Ivy vines the size of trees from the ground to
-					the top! They showed up on time as planned and shortly after
-					introductions the crew was geared up and climbing and
-					cutting. We hung out with the crew during the whole process
-					and had a great time learning, watching and laughing through
-					the whole process. I did and will recommend this tree
-					service company to anyone needing trees removed.
-					Professional, experienced, fearless and affordable!"
-				</p>
-				<p class="float-right text-black mb-2">- Brenda B</p>
-				<br />
-				<center><a href="/reviewspage">see more</a></center>
-			</div>
-		</ul>
+		<MainMessage />
 
-		{
-			isloggedin ? (
-				<div id="payments">
-					<Card
-						href="/payments"
-						title="Payments"
-						body="Make a payment."
-					/>
-				</div>
-			) : (
-				<NotLoggedInPayments />
-			)
-		}
+		<CardGroup3 iLI={isloggedin} />
 
-		<center
-			><h1 class="m-8">
-				<span class="text-gradient">360 516 8933</span>
-			</h1>
-		</center>
+		<PhoneNumber />
 	</main>
 </Layout>
-
-<script>
-	const button = document.getElementById("signOutBtn");
-	button.addEventListener("click", () => {
-	// const Payments = document.getElementById("payments");
-	// const PaymentsOut = document.getElementById("paymentsOut");
-
-	// CardGroup2.style.display = "none";
-	// SignOutBtn.style.display = "none";
-	// Payments.style.display = "none";
-
-	// async function isLoggedIn(uid) {
-	// 	const u = "http://192.168.0.90:9090/isloggedin?creds=" + uid;
-	// 	const url = encodeURI(u);
-	// 	const resp = await fetch(url);
-	// 	const res = await resp.json();
-	// 	return res;
-	// }
-
-
-
-	// async function logOut(uid) {
-
-	// }
-
-	// async function windowCloseLogOut(uid) {
-
-	})
-</script>
-
-
