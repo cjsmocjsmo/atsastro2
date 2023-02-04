@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  ats:
+    image: ats:0.0.1
+    build: .
+    networks:
+      - ats
+    ports:
+      - 8585:80
+
+networks:
+  ats:
+
